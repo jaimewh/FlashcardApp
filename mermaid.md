@@ -1,4 +1,5 @@
-```mermaid
+# mermaid
+
 classDiagram
     class Flashcard {
         +int id
@@ -19,17 +20,6 @@ classDiagram
         +get_flashcards() List~Flashcard~
     }
 
-    class User {
-        +int id
-        +str username
-        +str email
-        +str password
-        +List~Deck~ decks
-        +register(username: str, email: str, password: str)
-        +login(email: str, password: str)
-        +get_decks() List~Deck~
-    }
-
     class SpacedRepetition {
         +dict review_schedule
         +schedule_review(flashcard: Flashcard, performance: str)
@@ -47,7 +37,6 @@ classDiagram
         +get_progress(flashcard_id: int) int
     }
 
-    User "1" --> "*" Deck
     Deck "1" --> "*" Flashcard
     Flashcard "1" --> "0..1" SpacedRepetition
     Flashcard "1" --> "0..1" ProgressTracker
