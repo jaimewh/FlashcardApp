@@ -1,5 +1,6 @@
-# mermaid
+# Mermaid Diagram for Class Structure
 
+```mermaid
 classDiagram
     class Flashcard {
         +int id
@@ -43,3 +44,4 @@ classDiagram
     WebScraper ..> Flashcard : generates
     SpacedRepetition --> Flashcard : schedules
     ProgressTracker --> Flashcard : tracks
+```
