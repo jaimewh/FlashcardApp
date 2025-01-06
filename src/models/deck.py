@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from database.db import Base
+from src.database.db import Base
 
 class Deck(Base):
     __tablename__ = "decks"
@@ -8,4 +8,4 @@ class Deck(Base):
     name = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=True)
 
-    flashcards = relationship("Flashcard", back_populates="deck")
+    flashcards = relationship("Flashcard", back_populates="deck", cascade="all, delete")
