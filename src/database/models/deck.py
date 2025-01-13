@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from src.database.db import Base
-from src.models.flashcard import Flashcard
+
 
 class Deck(Base):
     __tablename__ = "decks"

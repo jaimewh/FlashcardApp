@@ -4,3 +4,9 @@ __pycache__/
 **/.DS_Store
 .vscode
 .idea
+*.egg
+*.egg-info/
+*.eggs/
+dist/
+build/
+develop-eggs/
