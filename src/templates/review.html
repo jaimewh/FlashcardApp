@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="review-container">
+    <div class="review-header">
+        <h2>{{ deck.name }} - Review</h2>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ progress }}%"></div>
+        </div>
+        <div class="progress-text">
+            Card {{ current_card_index + 1 }} of {{ total }}
+        </div>
+    </div>
+
+    <div class="flashcard" id="flashcard">
+        <div class="card-front" id="cardFront">
+            <div class="chinese-text">{{ card.word }}</div>
+            <div class="pinyin">{{ card.pinyin }}</div>
+        </div>
+        <div class="card-back" id="cardBack" style="display: none;">
+            <div class="translation">{{ card.translation }}</div>
+            {% if card.example_sentence %}
+                <div class="example">{{ card.example_sentence }}</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="review-actions">
+        <button onclick="flipCard()" class="button flip-btn" id="flipButton">Show Answer</button>
+        <form action="{{ url_for('review.next_card', deck_id=deck.id) }}" method="POST" class="next-form">
+            <button type="submit" class="button next-btn" style="display: none;" id="nextButton">Next Card</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function flipCard() {
+    const cardFront = document.getElementById('cardFront');
+    const cardBack = document.getElementById('cardBack');
+    const flipButton = document.getElementById('flipButton');
+    const nextButton = document.getElementById('nextButton');
+
+    if (cardBack.style.display === 'none') {
+        cardFront.style.display = 'none';
+        cardBack.style.display = 'block';
+        flipButton.style.display = 'none';
+        nextButton.style.display = 'block';
+    } else {
+        cardFront.style.display = 'block';
+        cardBack.style.display = 'none';
+        flipButton.style.display = 'block';
+        nextButton.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

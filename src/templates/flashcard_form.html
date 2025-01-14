@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ "Edit" if flashcard else "Add" }} Flashcard</h2>
+<form method="post" action="{{ url_for('flashcard_save', deck_id=deck_id, flashcard_id=flashcard.id if flashcard else None) }}">
+    <label for="word">Word (汉字):</label>
+    <input type="text" id="word" name="word" value="{{ flashcard.word if flashcard else '' }}" required>
+    <br>
+    <label for="pinyin">Pinyin:</label>
+    <input type="text" id="pinyin" name="pinyin" value="{{ flashcard.pinyin if flashcard else '' }}" required>
+    <br>
+    <label for="translation">Translation:</label>
+    <input type="text" id="translation" name="translation" value="{{ flashcard.translation if flashcard else '' }}" required>
+    <br>
+    <button type="submit">{{ "Update" if flashcard else "Create" }}</button>
+</form>
+<a href="{{ url_for('deck_detail', deck_id=deck_id) }}">Cancel</a>
+{% endblock %}

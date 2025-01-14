@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="review-complete">
+    <h2>Review Complete!</h2>
+    <p>You've completed reviewing the deck: {{ deck.name }}</p>
+    
+    <div class="actions">
+        <a href="{{ url_for('review.start_review', deck_id=deck.id) }}" class="button">Review Again</a>
+        <a href="{{ url_for('decks.get_deck', deck_id=deck.id) }}" class="button">Back to Deck</a>
+    </div>
+</div>
+
+<style>
+.review-complete {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #1976D2;
+}
+</style>
+{% endblock %}
