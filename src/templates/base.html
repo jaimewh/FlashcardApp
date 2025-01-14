@@ -12,6 +12,7 @@
         <nav>
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('decks.view_decks') }}">Decks</a>
+            <a href="{{ url_for('review.all_decks_stats') }}">Stats</a>
         </nav>
     </header>
 
@@ -34,7 +35,7 @@
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; Mandarin Flashcard Manager</p>
+        <p>EC24592</p>
     </footer>
 </body>
 </html>

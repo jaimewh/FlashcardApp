@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="home-container">
-    <h2>Mandarin Flashcard Manager</h2>
+    <h2></h2>
     <div class="action-buttons">
-        <a href="{{ url_for('decks.view_decks') }}" class="button">View Decks</a>
-        <a href="{{ url_for('review.all_decks_stats') }}" class="button">View All Decks Stats</a>
-        <a href="{{ url_for('review.review_all_due') }}" class="button review-button">Review All Due Cards</a>
+        <a href="{{ url_for('decks.view_decks') }}" class="button home-button">View Decks</a>
+        <a href="{{ url_for('review.all_decks_stats') }}" class="button home-button ">View All Decks Stats</a>
+        <a href="{{ url_for('review.review_all_due') }}" class="button home-button">Review All Due Cards</a>
     </div>
 </div>
 {% endblock %}

@@ -1,27 +1,27 @@
 # FlashcardApp
 
+## Instructions
+- Run "pip install -r requirements.txt" in terminal to install the required packages.
+- Run "python scripts/populate_db.py" in terminal to populate the database with data.
+- Run "python app.py" in terminal to start the application.
+
 ## Project Board
 
 ### To Do
-
-- [ ] Design the database schema for Flashcards, Decks, and Users.
 - [ ] Create a web scraping module for vocabulary and example sentences.
-- [ ] Design the Spaced Repetition System (SRS) algorithm.
-- [ ] Set up the Flask/Django backend.
-- [ ] Choose a GUI/Frontend framework for the user interface.
 - [ ] Write unit tests for core functionality.
-
+- [ ] Integrate a library for generating audio (e.g., Google Text-to-Speech).
 ### In Progress
 
-- [ ] Build a Flask/Django route for adding flashcards.
-- [ ] Develop a prototype of the review session interface.
-- [ ] Integrate a library for generating audio (e.g., Google Text-to-Speech).
-
 ### Done
-
+- [x] Design the database schema for Flashcards, Decks, and Review.
+- [x] Design the Spaced Repetition System (SRS) algorithm.
+- [x] Set up the Flask backend.
+- [x] Choose a Frontend framework for the user interface.
 - [x] Define user stories and personas.
 - [x] Plan the architecture and class diagram.
 - [x] Research web scraping libraries (e.g., BeautifulSoup, Scrapy).
+- [x] Build a Flask route for adding flashcards.
 
 ## Requirement
 

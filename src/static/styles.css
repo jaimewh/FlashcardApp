@@ -54,7 +54,7 @@ main {
 
 /* Links */
 a {
-    color: #4CAF50;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -474,11 +474,11 @@ textarea {
     color: white;
 }
 
-.review-button {
+.home-button {
     background-color: #28a745;
 }
 
-.review-button:hover {
+.home-button:hover {
     background-color: #218838;
 }
 

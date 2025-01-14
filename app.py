@@ -12,10 +12,10 @@ app = Flask(__name__,
 app.register_blueprint(decks_bp)
 app.register_blueprint(review_bp)
 
-# Set a secret key for session management
+# Key for session management
 app.secret_key = os.environ.get('FLASK_SECRET_KEY', os.urandom(24))
 
-# Add home route
+# Home route
 @app.route('/')
 def index():
     return render_template('home.html')
