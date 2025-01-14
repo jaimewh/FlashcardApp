@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="review-complete">
+    <h2>Review Complete!</h2>
+    <p>You've finished reviewing all cards in {{ deck.name }}</p>
+
+    <div class="completion-actions">
+        <a href="{{ url_for('review.start_review', deck_id=deck.id) }}" class="button review-btn">Review Again</a>
+        <a href="{{ url_for('review.review_stats', deck_id=deck.id) }}" class="button stats-btn">View Stats</a>
+        <a href="{{ url_for('decks.view_deck', deck_id=deck.id) }}" class="button back-btn">Back to Deck</a>
+    </div>
+</div>
+{% endblock %}

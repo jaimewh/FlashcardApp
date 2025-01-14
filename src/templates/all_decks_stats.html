@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="all-decks-stats-container">
+    <h2>All Decks Review Statistics</h2>
+    <table class="review-stats-table">
+        <thead>
+            <tr>
+                <th>Deck Name</th>
+                <th>Total Cards</th>
+                <th>Reviewed Cards</th>
+                <th>Total Reviews</th>
+                <th>Accuracy</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for deck_stat in stats %}
+            <tr>
+                <td>{{ deck_stat.deck_name }}</td>
+                <td>{{ deck_stat.total_cards }}</td>
+                <td>{{ deck_stat.reviewed_cards }}</td>
+                <td>{{ deck_stat.total_reviews }}</td>
+                <td>{{ deck_stat.accuracy }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="back-link">
+        <a href="{{ url_for('index') }}" class="button">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

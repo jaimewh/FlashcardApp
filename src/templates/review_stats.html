@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="review-stats-container">
+    <h2>Review Statistics for {{ deck.name }}</h2>
+    <table class="review-stats-table">
+        <thead>
+            <tr>
+                <th>Word</th>
+                <th>Next Review</th>
+                <th>Last Result</th>
+                <th>Times Reviewed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+            <tr>
+                <td>{{ stat.word }}</td>
+                <td>{{ stat.next_review.strftime('%Y-%m-%d') if stat.next_review else 'Not reviewed' }}</td>
+                <td>
+                    {% if stat.last_result is not none %}
+                        {% if stat.last_result %}
+                            <span class="correct">✓</span>
+                        {% else %}
+                            <span class="wrong">✗</span>
+                        {% endif %}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>{{ stat.review_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

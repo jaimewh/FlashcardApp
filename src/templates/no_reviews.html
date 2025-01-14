@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="no-reviews-container">
+    <h2>No Cards to Review</h2>
+    <p>All cards in {{ deck.name }} are up to date!</p>
+    <a href="{{ url_for('decks.view_deck', deck_id=deck.id) }}" class="button">Back to Deck</a>
+</div>
+{% endblock %}

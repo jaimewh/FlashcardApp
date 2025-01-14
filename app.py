@@ -3,7 +3,6 @@ from src.routes.decks import decks_bp
 from src.routes.review import review_bp
 from src.database.db import engine, Base
 import os
-
 app = Flask(__name__,
     template_folder='src/templates',
     static_folder='src/static'

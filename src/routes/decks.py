@@ -1,7 +1,7 @@
-from flask import Blueprint, request, jsonify, abort, render_template, redirect, url_for
+from flask import Blueprint, request, jsonify, abort, render_template, redirect, url_for, flash
 from sqlalchemy.exc import IntegrityError
 from src.database.db import get_db
-from src.database.models.deck import Deck
+from src.database.models import Deck, Flashcard
 
 # Define the blueprint for deck routes
 decks_bp = Blueprint("decks", __name__, url_prefix="/decks")
@@ -33,6 +33,65 @@ def view_deck(deck_id):
         if not deck:
             abort(404, description="Deck not found")
         return render_template('deck_detail.html', deck=deck)
+    finally:
+        db.close()
+
+@decks_bp.route('/deck/<int:deck_id>/card/add', methods=['GET', 'POST'])
+def add_card(deck_id):
+    db = next(get_db())
+    try:
+        deck = db.query(Deck).get(deck_id)
+        if not deck:
+            return "Deck not found", 404
+
+        if request.method == 'POST':
+            new_card = Flashcard(
+                word=request.form['word'],
+                pinyin=request.form['pinyin'],
+                translation=request.form['translation'],
+                example_sentence=request.form['example_sentence'],
+                deck_id=deck_id
+            )
+            db.add(new_card)
+            db.commit()
+            flash('Card added successfully!', 'success')
+            return redirect(url_for('decks.view_deck', deck_id=deck_id))
+
+        return render_template('add_card.html', deck=deck)
+    finally:
+        db.close()
+
+@decks_bp.route('/deck/<int:deck_id>/card/<int:card_id>/edit', methods=['GET', 'POST'])
+def edit_card(deck_id, card_id):
+    db = next(get_db())
+    try:
+        card = db.query(Flashcard).get(card_id)
+        if not card:
+            return "Card not found", 404
+
+        if request.method == 'POST':
+            card.word = request.form['word']
+            card.pinyin = request.form['pinyin']
+            card.translation = request.form['translation']
+            card.example_sentence = request.form['example_sentence']
+            db.commit()
+            flash('Card updated successfully!', 'success')
+            return redirect(url_for('decks.view_deck', deck_id=deck_id))
+
+        return render_template('edit_card.html', card=card, deck_id=deck_id)
+    finally:
+        db.close()
+
+@decks_bp.route('/deck/<int:deck_id>/card/<int:card_id>/delete', methods=['POST'])
+def delete_card(deck_id, card_id):
+    db = next(get_db())
+    try:
+        card = db.query(Flashcard).get(card_id)
+        if card:
+            db.delete(card)
+            db.commit()
+            flash('Card deleted successfully!', 'success')
+        return redirect(url_for('decks.view_deck', deck_id=deck_id))
     finally:
         db.close()
 
